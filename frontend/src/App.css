@@ -1,3 +1,16 @@
 .App {
   text-align: center;
 }
+
+.list {
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+}
+
+.centered {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
