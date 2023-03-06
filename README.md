@@ -11,3 +11,6 @@ Send request with keyword to `http://localhost:8000/{keyword}`
 
 e.g.:
 `curl --request GET --url http://127.0.0.1:8000/mountainbike`
+
+# Start frontend
+`cd frontend && npm start`
