@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import './App.css';
 import {
     Button,
-    FormControl,
     TextField,
     Card, CardContent, Typography, Grid
 } from "@mui/material"
@@ -36,7 +35,8 @@ function App() {
             .then(d => setData({...d}))
     }
 
-    function handleSubmit() {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
         if (formValues.keyword) {
             fetchData(formValues.keyword);
         } else {
@@ -46,26 +46,25 @@ function App() {
     }
 
     return (
-        <div>
-            <FormControl sx={{display: "flex", flexDirection: "row", padding: "10px"}}>
-                <TextField
-                    autoFocus
-                    fullWidth
-                    name="keyword"
-                    label="Suchbegriff"
-                    variant="outlined"
-                    onChange={handleTextFieldChange}
-                />
-                <Button
-                    sx={{ml: 1}}
-                    type="submit"
-                    variant="contained"
-                    onClick={handleSubmit}
-                >
-                    Suchen
-                </Button>
-            </FormControl>
-            <Grid container spacing={12}>
+        <div style={{margin:"10px"}}>
+            <form style={{ display: "inline-flex", flexDirection: "row", width: "100%"}} onSubmit={handleSubmit}>
+                    <TextField
+                        autoFocus
+                        fullWidth
+                        name="keyword"
+                        label="Suchbegriff"
+                        variant="outlined"
+                        onChange={handleTextFieldChange}
+                    />
+                    <Button
+                        sx={{ml: 1}}
+                        type="submit"
+                        variant="contained"
+                    >
+                        Suchen
+                    </Button>
+            </form>
+            <Grid container spacing={12} sx={{padding: "10px"}}>
                 {data && Object.keys(data.message).map((key) => (
                     <Grid item xs={4}>
                         <Card variant="outlined" sx={{height: "250px", overflow: 'auto'}}>
