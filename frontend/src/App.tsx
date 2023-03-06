@@ -66,7 +66,7 @@ function App() {
             </form>
             <Grid container spacing={12} sx={{padding: "10px"}}>
                 {data && Object.keys(data.message).map((key) => (
-                    <Grid item xs={4}>
+                    <Grid item xs={12} md={6} lg={4}>
                         <Card variant="outlined" sx={{height: "250px", overflow: 'auto'}}>
                             <CardContent sx={{justify: "flex-start"}}>
                                 <Typography variant="h5" component="div" gutterBottom>
