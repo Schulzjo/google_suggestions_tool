@@ -20,7 +20,7 @@ app.add_middleware(
 
 @app.get("/{keyword}")
 async def root(keyword: str):
-    q = ['wer', 'wie', 'was']
+    q = ['wer', 'wie', 'was', 'wo', 'wann', 'warum']
 
     output = dict()
 
