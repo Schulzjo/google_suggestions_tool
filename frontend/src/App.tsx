@@ -4,6 +4,7 @@ import {
     Button,
     FormControl,
     TextField,
+    Card, CardContent, Typography, Grid
 } from "@mui/material"
 
 interface ApiResponse {
@@ -45,7 +46,7 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <div>
             <FormControl sx={{display: "flex", flexDirection: "row", padding: "10px"}}>
                 <TextField
                     autoFocus
@@ -64,17 +65,22 @@ function App() {
                     Suchen
                 </Button>
             </FormControl>
-            <div className={"list centered"}>
-                <ul>
-                    {data && Object.keys(data.message).map((key) => (
-                        <li>{key}
-                            <ul>
-                                {data.message[key].map((value) => (<li>{value}</li>))}
-                            </ul>
-                        </li>
-                    ))
-                    }</ul>
-            </div>
+            <Grid container spacing={12}>
+                {data && Object.keys(data.message).map((key) => (
+                    <Grid item xs={4}>
+                        <Card variant="outlined" sx={{height: "250px", overflow: 'auto'}}>
+                            <CardContent sx={{justify: "flex-start"}}>
+                                <Typography variant="h5" component="div" gutterBottom>
+                                    {key}
+                                </Typography>
+                                {data.message[key].map((value) => (
+                                    <Typography variant="body1">{value}<br/></Typography>))}
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                ))
+                }
+            </Grid>
         </div>
     );
 }
