@@ -3,8 +3,8 @@ import './App.css';
 import {
     Button,
     TextField,
-    Card, CardContent, Typography, Grid
 } from "@mui/material"
+import ResultCards from "./components/ResultCards";
 
 interface ApiResponse {
     message: { [key: string]: string[] };
@@ -64,22 +64,7 @@ function App() {
                         Suchen
                     </Button>
             </form>
-            <Grid container spacing={12} sx={{padding: "10px"}}>
-                {data && Object.keys(data.message).map((key) => (
-                    <Grid item xs={12} md={6} lg={4}>
-                        <Card variant="outlined" sx={{height: "250px", overflow: 'auto'}}>
-                            <CardContent sx={{justify: "flex-start"}}>
-                                <Typography variant="h5" component="div" gutterBottom>
-                                    {key}
-                                </Typography>
-                                {data.message[key].map((value) => (
-                                    <Typography variant="body1">{value}<br/></Typography>))}
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                ))
-                }
-            </Grid>
+            {data && <ResultCards result={data.message}/>}
         </div>
     );
 }
