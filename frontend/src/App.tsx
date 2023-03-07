@@ -1,10 +1,12 @@
 import React, {useState} from 'react';
 import './App.css';
 import {
+    Box,
     Button,
     TextField,
 } from "@mui/material"
 import ResultCards from "./components/ResultCards";
+import Appbar from "./components/Appbar";
 
 interface ApiResponse {
     message: { [key: string]: string[] };
@@ -46,8 +48,11 @@ function App() {
     }
 
     return (
-        <div style={{margin:"10px"}}>
-            <form style={{ display: "inline-flex", flexDirection: "row", width: "100%"}} onSubmit={handleSubmit}>
+        <Box sx={{display: "flex"}}>
+            <Appbar/>
+            <Box sx={{flexGrow: 1, p: 3, pt: 10}}>
+                <form style={{display: "inline-flex", flexDirection: "row", width: "100%"}}
+                      onSubmit={handleSubmit}>
                     <TextField
                         autoFocus
                         fullWidth
@@ -63,9 +68,10 @@ function App() {
                     >
                         Suchen
                     </Button>
-            </form>
-            {data && <ResultCards result={data.message}/>}
-        </div>
+                </form>
+                {data && <ResultCards result={data.message}/>}
+            </Box>
+        </Box>
     );
 }
 
