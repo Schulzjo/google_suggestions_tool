@@ -6,7 +6,7 @@ import {
     TextField,
 } from "@mui/material"
 import ResultCards from "./components/ResultCards";
-import Appbar from "./components/Appbar";
+import Layout from "./layout";
 
 interface ApiResponse {
     message: { [key: string]: string[] };
@@ -48,8 +48,7 @@ function App() {
     }
 
     return (
-        <Box sx={{display: "flex"}}>
-            <Appbar/>
+        <Layout>
             <Box sx={{flexGrow: 1, p: 3, pt: 10}}>
                 <form style={{display: "inline-flex", flexDirection: "row", width: "100%"}}
                       onSubmit={handleSubmit}>
@@ -71,7 +70,7 @@ function App() {
                 </form>
                 {data && <ResultCards result={data.message}/>}
             </Box>
-        </Box>
+        </Layout>
     );
 }
 
