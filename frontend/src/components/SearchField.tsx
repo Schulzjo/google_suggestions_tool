@@ -1,6 +1,6 @@
 import {Button, TextField} from "@mui/material";
 import React, {useState} from "react";
-import {Navigate} from "react-router-dom";
+import {Navigate, useNavigate} from "react-router-dom";
 
 interface FormValues {
     keyword?: string;
@@ -9,7 +9,7 @@ interface FormValues {
 const SearchField = () => {
 
     const [formValues, setFormValues] = useState<FormValues>({});
-    const [submitted, setSubmitted] = useState(false);
+    const navigate = useNavigate();
 
     const handleTextFieldChange = (
         event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -20,43 +20,42 @@ const SearchField = () => {
             [name]: value,
         });
     };
+
     function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
         if (formValues.keyword) {
             //fetchData(formValues.keyword);
-            setSubmitted(true);
             console.log("navigate to resultpage");
+            navigate("/result/" + formValues.keyword);
         } else {
-            setSubmitted(false);
+            console.log('no keyword');
         }
 
     }
-    if (submitted) {
-        return <Navigate to={"/result/" +formValues.keyword}/>
-    } else {
-        return (
-            <div>
-                <form style={{display: "inline-flex", flexDirection: "row", width: "100%"}}
-                      onSubmit={handleSubmit}>
-                    <TextField
-                        autoFocus
-                        fullWidth
-                        name="keyword"
-                        label="Suchbegriff"
-                        variant="outlined"
-                        onChange={handleTextFieldChange}
-                    />
-                    <Button
-                        sx={{ml: 1}}
-                        type="submit"
-                        variant="contained"
-                    >
-                        Suchen
-                    </Button>
-                </form>
-            </div>
-        );
-    }
+
+    return (
+        <div>
+            <form style={{display: "inline-flex", flexDirection: "row", width: "100%"}}
+                  onSubmit={handleSubmit}>
+                <TextField
+                    autoFocus
+                    fullWidth
+                    name="keyword"
+                    label="Suchbegriff"
+                    variant="outlined"
+                    onChange={handleTextFieldChange}
+                />
+                <Button
+                    sx={{ml: 1}}
+                    type="submit"
+                    variant="contained"
+                >
+                    Suchen
+                </Button>
+            </form>
+        </div>
+    );
+
 }
 
 export default SearchField
