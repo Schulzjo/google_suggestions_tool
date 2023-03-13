@@ -1,5 +1,5 @@
 import {AppBar as AppBarMUI, Box, Toolbar, Typography} from "@mui/material"
-import {useMatch, useNavigate} from "react-router-dom";
+import {useMatch } from "react-router-dom";
 import SearchField from "../../components/SearchField";
 import React from "react";
 
@@ -17,7 +17,7 @@ const Appbar: React.FC<AppbarProps> = () => {
                 <Box>
                     <Typography>Google Suggestion Tool</Typography>
                 </Box>
-                <Box style={{ width: "50%", margin: "0 auto" }}>
+                <Box style={{ width: "50%", margin: "0 auto", paddingTop: 10, paddingBottom: 10}}>
                     {matchResultRoute && <SearchField/>}
                 </Box>
             </Toolbar>
