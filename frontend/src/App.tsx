@@ -91,7 +91,7 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <Layout>
-                <Box sx={{flexGrow: 1, p: 3, pt: 10}}>
+                <Box className="WaveBackground" sx={{flexGrow: 1, p: 3, pt: 10}}>
                     <Routes/>
                 </Box>
             </Layout>

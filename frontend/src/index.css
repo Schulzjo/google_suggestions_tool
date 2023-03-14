@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.WaveBackground {
+  background-image: url("background/wave_grau_640.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+@media (orientation: portrait), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_1280.jpg");
+  }
+}
+@media (min-width: 640px) and (orientation: landscape) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_1280.jpg");
+  }
+}
+@media (min-width: 640px) and (orientation: portrait) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_2560.jpg");
+  }
+}
+@media (min-width: 640px) and (-webkit-min-device-pixel-ratio: 1.5),
+  (min-width: 640px) and (min-resolution: 144dpi) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_2560.jpg");
+  }
+}
+@media (min-width: 1280px) and (orientation: landscape) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_2560.jpg");
+  }
+}
+@media (min-width: 1280px) and (orientation: portrait) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_5120.jpg");
+  }
+}
+@media (min-width: 1280px) and (-webkit-min-device-pixel-ratio: 1.5),
+  (min-width: 1280px) and (min-resolution: 144dpi) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_5120.jpg");
+  }
+}
+@media (min-width: 2560px) and (orientation: landscape) {
+  .WaveBackground {
+    background-image: url("background/wave_grau_5120.jpg");
+  }
+}
