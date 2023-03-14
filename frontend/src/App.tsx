@@ -31,7 +31,7 @@ const theme = createTheme({
     components: {
         MuiButton: {
             styleOverrides: {
-                root: {
+                containedPrimary: {
                     backgroundColor: COLOR_SECOND
                 }
             }
