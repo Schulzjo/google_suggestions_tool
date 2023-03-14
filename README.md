@@ -17,3 +17,11 @@ e.g.:
 
 # Start frontend
 `cd frontend && npm start`
+
+# ToDo's
+- [x] Basic functionality
+- [ ] Containerization
+- [ ] CI Pipeline
+- [ ] Add loading/error handling in frontend
+- [ ] Add more tests
+- [ ] More Feature ;)
