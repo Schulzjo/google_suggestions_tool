@@ -3,6 +3,9 @@ Small fun project which uses the Google suggestion api to generate the most freq
 
 Repository is actually work in progress.
 
+![screenshot_1.jpg](docs/screenshot_1.jpg)
+![screenshot_2.jpg](docs/screenshot_2.jpg)
+
 # Start backend
 `cd backend && uvicorn main:app --reload`
 
