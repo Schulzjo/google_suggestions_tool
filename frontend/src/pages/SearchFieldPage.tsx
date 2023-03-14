@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import SearchField from "../components/SearchField";
 import {Box, Grid} from "@mui/material";
 
