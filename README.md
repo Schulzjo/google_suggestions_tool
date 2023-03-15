@@ -6,16 +6,23 @@ Repository is actually work in progress.
 ![screenshot_1.jpg](docs/screenshot_1.jpg)
 ![screenshot_2.jpg](docs/screenshot_2.jpg)
 
-# Start backend
+# Usage
+- clone repository
+- install docker and docker-compose 
+- run `docker-compose up` in root directory of repository
+- you can reach the frontend on http://localhost:3000
+
+# For Development
+## Start backend
 `cd backend && uvicorn main:app --reload`
 
-# request suggestions
+## request suggestions
 Send request with keyword to `http://localhost:8000/{keyword}`
 
 e.g.:
 `curl --request GET --url http://127.0.0.1:8000/mountainbike`
 
-# Start frontend
+## Start frontend
 `cd frontend && npm start`
 
 # ToDo's
