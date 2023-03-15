@@ -20,7 +20,7 @@ e.g.:
 
 # ToDo's
 - [x] Basic functionality
-- [ ] Containerization
+- [x] Containerization
 - [ ] CI Pipeline
 - [ ] Add loading/error handling in frontend
 - [ ] Add more tests
