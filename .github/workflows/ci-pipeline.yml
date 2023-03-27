@@ -42,7 +42,7 @@ jobs:
           docker image ls -a
       - name: Run pytest inside container
         run: |
-          docker run --rm backend pytest
+          docker run --rm backend pytest --cov-report=term --cov-report=xml:coverage.xml --cov=backend
   build-frontend:
     timeout-minutes: 10
     runs-on: ubuntu-latest
