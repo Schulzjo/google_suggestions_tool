@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: coverage-report
-          path: coveragte.xml
+          path: coverage.xml
   build-frontend:
     timeout-minutes: 10
     runs-on: ubuntu-latest
