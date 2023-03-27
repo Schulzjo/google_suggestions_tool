@@ -13,7 +13,7 @@ jobs:
       - name: Build backend
         uses: docker/build-push-action@v4
         with:
-          context: .
+          context: ./backend
           file: ./backend/Dockerfile
           tags: backend:latest
           outputs: type=docker,dest=/tmp/backend.tar
