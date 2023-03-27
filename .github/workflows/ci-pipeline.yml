@@ -15,7 +15,7 @@ jobs:
         with:
           context: ./backend
           file: ./backend/Dockerfile
-          tags: backend:latest
+          tags: backend:latestfix path to Docker file
           outputs: type=docker,dest=/tmp/backend.tar
       - name: Upload artifact
         uses: actions/upload-artifact@v2
@@ -39,3 +39,7 @@ jobs:
         run: |
           docker load --input /tmp/backend.tar
           docker image ls -a
+      - name: Run pytest inside container
+        run: |
+          docker compose -f docker-compose.yml up -d
+          docker compose run --rm backend pytest
