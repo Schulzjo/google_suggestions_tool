@@ -1,0 +1,90 @@
+name: CI Pipeline
+run-name: Build and Test
+on: [ push ]
+
+jobs:
+  build-backend:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build backend
+        uses: docker/build-push-action@v4
+        with:
+          context: ./backend
+          file: ./backend/Dockerfile
+          tags: backend:latest
+          outputs: type=docker,dest=/tmp/backend.tar
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: backend
+          path: /tmp/backend.tar
+  test-backend:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    needs: build-backend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: backend
+          path: /tmp
+      - name: Load Docker image
+        run: |
+          docker load --input /tmp/backend.tar
+          docker image ls -a
+      - name: Run pytest inside container
+        run: |
+          docker run --rm -v $(pwd):/app backend pytest --cov-report=term --cov-report=xml:coverage.xml --cov=backend
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coverage.xml
+  build-frontend:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Build frontend
+        uses: docker/build-push-action@v4
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          tags: frontend:latest
+          outputs: type=docker,dest=/tmp/frontend.tar
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: frontend
+          path: /tmp/frontend.tar
+  test-frontend:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    needs: build-frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend
+          path: /tmp
+      - name: Load Docker image
+        run: |
+          docker load --input /tmp/frontend.tar
+          docker image ls -a
+      - name: Run npm test inside container
+        run: |
+          docker run --rm frontend npm test -- --watchAll=false --coverage

@@ -28,7 +28,7 @@ e.g.:
 # ToDo's
 - [x] Basic functionality
 - [x] Containerization
-- [ ] CI Pipeline
+- [x] CI Pipeline
 - [ ] Add loading/error handling in frontend
 - [ ] Add more tests
 - [ ] More Feature ;)
