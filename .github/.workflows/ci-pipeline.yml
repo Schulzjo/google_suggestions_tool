@@ -1,5 +1,5 @@
 name: CI Pipeline
-
+run-name: Build and Test
 on: [ push ]
 
 jobs:
