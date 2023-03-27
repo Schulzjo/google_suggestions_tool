@@ -23,6 +23,7 @@ jobs:
           name: backend
           path: /tmp/backend.tar
   test-backend:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     needs: build-backend
     steps:
@@ -62,6 +63,7 @@ jobs:
           name: frontend
           path: /tmp/frontend.tar
   test-frontend:
+    timeout-minutes: 10
     runs-on: ubuntu-latest
     needs: build-frontend
     steps:
