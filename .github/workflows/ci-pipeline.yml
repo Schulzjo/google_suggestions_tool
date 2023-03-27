@@ -15,7 +15,7 @@ jobs:
         with:
           context: ./backend
           file: ./backend/Dockerfile
-          tags: backend:latestfix path to Docker file
+          tags: backend:latest
           outputs: type=docker,dest=/tmp/backend.tar
       - name: Upload artifact
         uses: actions/upload-artifact@v2
