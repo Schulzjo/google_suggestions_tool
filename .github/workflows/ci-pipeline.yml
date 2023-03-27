@@ -82,4 +82,4 @@ jobs:
           docker image ls -a
       - name: Run npm test inside container
         run: |
-          docker run --rm frontend npm test
+          docker run --rm frontend npm test -- --watchAll=false --coverage
