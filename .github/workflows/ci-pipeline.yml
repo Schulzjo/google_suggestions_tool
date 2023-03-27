@@ -42,7 +42,12 @@ jobs:
           docker image ls -a
       - name: Run pytest inside container
         run: |
-          docker run --rm backend pytest --cov-report=term --cov-report=xml:coverage.xml --cov=backend
+          docker run --rm -v $(pwd):/app backend pytest --cov-report=term --cov-report=xml:coverage.xml --cov=backend
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage-report
+          path: coveragte.xml
   build-frontend:
     timeout-minutes: 10
     runs-on: ubuntu-latest
