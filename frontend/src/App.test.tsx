@@ -52,15 +52,14 @@ const MOCKED_RESPONSE = new Response(JSON.stringify(MOCKED_JSON), {
     headers: { 'Content-type': 'application/json' },
 });
 
-beforeEach(() => {
-    jest.spyOn(global, 'fetch').mockResolvedValue(MOCKED_RESPONSE);
-});
-
 afterEach(() => {
     jest.restoreAllMocks();
 });
 
 test('Check if ResultPage is on route /result/:param available with mocked_response', async () => {
+
+    jest.spyOn(global, 'fetch').mockResolvedValue(MOCKED_RESPONSE);
+
     /* eslint-disable testing-library/no-unnecessary-act */
     await act(async () => {
     render(
@@ -81,17 +80,10 @@ test('Check if ResultPage is on route /result/:param available with mocked_respo
     expect(screen.getByText("warum mountainbike")).toBeInTheDocument();
 })
 
-
-// mock network error
-beforeEach(() => {
-    jest.spyOn(global, 'fetch').mockRejectedValue(new Error('Network error'));
-});
-
-afterEach(() => {
-    jest.restoreAllMocks();
-});
-
 test('Check Alert dialog is shown on error', async () => {
+
+    jest.spyOn(global, 'fetch').mockRejectedValue(new Error('Network error'));
+
     /* eslint-disable testing-library/no-unnecessary-act */
     await act(async () => {
     render(
