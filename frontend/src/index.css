@@ -27,6 +27,15 @@ code {
   top: 0;
 }
 
+.LoadingIndicator {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 70vh;
+  position: relative;
+  width: 100%;
+}
+
 @media (orientation: portrait), (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi) {
   .WaveBackground {
     background-image: url("background/wave_grau_1280.jpg");

@@ -29,6 +29,6 @@ e.g.:
 - [x] Basic functionality
 - [x] Containerization
 - [x] CI Pipeline
-- [ ] Add loading/error handling in frontend
+- [x] Add loading/error handling in frontend
 - [ ] Add more tests
 - [ ] More Feature ;)
