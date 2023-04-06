@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 
 from fastapi.middleware.cors import CORSMiddleware
-from utils import generate_api_url, call_api
+from backend.utils.utils import generate_api_url, call_api
 
 app = FastAPI()
 

@@ -1,6 +1,6 @@
 import json
 
-from backend.utils import generate_api_url, call_api
+from backend.utils.utils import generate_api_url, call_api
 from requests_mock import ANY
 
 
