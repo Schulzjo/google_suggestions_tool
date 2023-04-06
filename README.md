@@ -32,3 +32,4 @@ e.g.:
 - [x] Add loading/error handling in frontend
 - [ ] Increase test coverage to 100%
 - [ ] Implement Rotating Proxy
+- [ ] Add multilanguage support
