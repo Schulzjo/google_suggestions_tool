@@ -30,5 +30,5 @@ e.g.:
 - [x] Containerization
 - [x] CI Pipeline
 - [x] Add loading/error handling in frontend
-- [ ] Add more tests
-- [ ] More Feature ;)
+- [ ] Increase test coverage to 100%
+- [ ] Implement Rotating Proxy
