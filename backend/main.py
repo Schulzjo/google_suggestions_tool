@@ -1,8 +1,8 @@
 from fastapi import FastAPI
-import requests
-from fake_useragent import UserAgent
+
 from fastapi.middleware.cors import CORSMiddleware
-from .utils import generate_api_url
+from utils import generate_api_url, call_api
+
 app = FastAPI()
 
 origins = [
@@ -21,7 +21,6 @@ app.add_middleware(
 @app.get("/{keyword}")
 async def root(keyword: str):
     question_words = ['wer', 'wie', 'was', 'wo', 'wann', 'warum']
-    ua = UserAgent()
 
     output = dict()
 
@@ -29,10 +28,8 @@ async def root(keyword: str):
 
         url = generate_api_url(q, keyword)
 
-        headers = {"user-agent": ua.chrome}
-        response = requests.get(url, headers=headers, verify=False)
-        j = response.json()
-        print(j)
-        output[j[0]] = j[1]
-    print(output)
+        json_response = call_api(url)
+
+        output[json_response[0]] = json_response[1]
+
     return {"message": output}
