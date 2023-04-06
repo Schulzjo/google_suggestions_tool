@@ -29,6 +29,13 @@ def call_api(url: str):
     :param url: str
     api url
     :return: response as json
+    looks like this:
+    ['wer mauntainbike', ['wer hat mountainbike erfunden', 'wer sucht mountainbike'],
+                            ['', ''], [], {'google:clientdata': {'bpc': False, 'tlw': False},
+                                           'google:suggestrelevance': [601, 600],
+                                           'google:suggestsubtypes': [[8, 30, 13], [8, 30, 13]],
+                                           'google:suggesttype': ['QUERY', 'QUERY'],
+                                           'google:verbatimrelevance': 1300}]
     """
 
     ua = UserAgent()
