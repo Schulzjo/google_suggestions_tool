@@ -2,7 +2,7 @@ from fastapi import FastAPI
 import requests
 from fake_useragent import UserAgent
 from fastapi.middleware.cors import CORSMiddleware
-
+from .utils import generate_api_url
 app = FastAPI()
 
 origins = [
@@ -20,18 +20,19 @@ app.add_middleware(
 
 @app.get("/{keyword}")
 async def root(keyword: str):
-    q = ['wer', 'wie', 'was', 'wo', 'wann', 'warum']
+    question_words = ['wer', 'wie', 'was', 'wo', 'wann', 'warum']
+    ua = UserAgent()
 
     output = dict()
 
-    for x in q:
-        parameter = f'{x}+{keyword.replace(" ", "+")}'
-        url = "http://suggestqueries.google.com/complete/search?output=firefox&q=" + parameter
-        ua = UserAgent()
+    for q in question_words:
+
+        url = generate_api_url(q, keyword)
+
         headers = {"user-agent": ua.chrome}
         response = requests.get(url, headers=headers, verify=False)
         j = response.json()
-
+        print(j)
         output[j[0]] = j[1]
-
+    print(output)
     return {"message": output}
