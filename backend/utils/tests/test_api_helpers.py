@@ -18,7 +18,6 @@ def test_generate_api_url():
                             "mountain bike & co") == "http://suggestqueries.google.com/complete/search?output=chrome&q=wer%20mountain%20bike%20%26%20co"
 
 
-# test call_api function with mocked request method
 def test_call_api(requests_mock):
 
     mocked_json_response = ['wer mauntainbike', ['wer hat mountainbike erfunden', 'wer sucht mountainbike'],
