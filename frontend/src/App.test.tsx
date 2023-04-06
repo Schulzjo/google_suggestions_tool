@@ -81,3 +81,28 @@ test('Check if ResultPage is on route /result/:param available with mocked_respo
     expect(screen.getByText("warum mountainbike")).toBeInTheDocument();
 })
 
+
+// mock network error
+beforeEach(() => {
+    jest.spyOn(global, 'fetch').mockRejectedValue(new Error('Network error'));
+});
+
+afterEach(() => {
+    jest.restoreAllMocks();
+});
+
+test('Check Alert dialog is shown on error', async () => {
+    /* eslint-disable testing-library/no-unnecessary-act */
+    await act(async () => {
+    render(
+        <MemoryRouter initialEntries={["/result/mountainbike"]}>
+            <App/>
+        </MemoryRouter>);
+    })
+
+    // Searchfield should be still rendered in header
+    expect(screen.getByText("Suchen")).toBeInTheDocument();
+    expect(screen.getByLabelText("Suchbegriff")).toBeInTheDocument();
+    // identify result by text
+    expect(screen.getByText("Network error")).toBeInTheDocument();
+})
