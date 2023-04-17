@@ -1,3 +1,6 @@
+import asyncio
+import json
+import time
 import urllib.parse
 from fake_useragent import UserAgent
 import requests
@@ -23,7 +26,7 @@ def generate_api_url(question_word: str, keyword: str, output_format: str = "chr
     return f"http://suggestqueries.google.com/complete/search?output={output_format}&q={parameter}"
 
 
-def call_api(url: str):
+async def call_api(url: str, session):
     """
     adds user agen to request, calls given url and returns response as json
     :param url: str
@@ -40,7 +43,11 @@ def call_api(url: str):
 
     ua = UserAgent()
     headers = {"user-agent": ua.chrome}
-
-    response = requests.get(url, headers=headers, verify=False)
-
-    return response.json()
+    try:
+        async with session.get(url, headers=headers, verify_ssl=False) as response:
+            resp = await response.read()
+            return json.loads(resp)
+    except Exception as e:
+        # TODO: add some error handling
+        print(e)
+        pass
