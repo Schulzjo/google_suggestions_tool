@@ -18,7 +18,7 @@ Repository is actually work in progress.
 `docker-compose up -d rproxy`
 
 ## Start backend
-`cd backend && uvicorn main:app --reload`
+`uvicorn backend.main:app --reload`
 
 ## request suggestions
 Send request with keyword to `http://localhost:8000/{keyword}`
