@@ -13,6 +13,10 @@ Repository is actually work in progress.
 - you can reach the frontend on http://localhost:3000
 
 # For Development
+
+## Start rotating Proxy
+`docker-compose up -d rproxy`
+
 ## Start backend
 `cd backend && uvicorn main:app --reload`
 
