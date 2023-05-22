@@ -43,8 +43,6 @@ def call_api(url: str):
     proxy_url = "http://localhost:5566" if not os.getenv(
         "INSIDE_DOCKER") else "http://rproxy:5566"
 
-    print(f"proxy_url: {proxy_url}")
-
     proxies = {
         "http": proxy_url,
         "https": proxy_url,
