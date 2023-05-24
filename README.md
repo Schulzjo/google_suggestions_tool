@@ -35,5 +35,5 @@ e.g.:
 - [x] CI Pipeline
 - [x] Add loading/error handling in frontend
 - [ ] Increase test coverage to 100%
-- [ ] Implement Rotating Proxy
+- [x] Implement Rotating Proxy
 - [ ] Add multilanguage support
