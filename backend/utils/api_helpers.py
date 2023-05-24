@@ -1,3 +1,4 @@
+import os
 import urllib.parse
 from fake_useragent import UserAgent
 import requests
@@ -39,8 +40,16 @@ def call_api(url: str):
     """
 
     ua = UserAgent()
+    proxy_url = "http://localhost:5566" if not os.getenv(
+        "INSIDE_DOCKER") else "http://rproxy:5566"
+
+    proxies = {
+        "http": proxy_url,
+        "https": proxy_url,
+    }
+
     headers = {"user-agent": ua.chrome}
 
-    response = requests.get(url, headers=headers, verify=False)
+    response = requests.get(url, headers=headers, verify=False, proxies=proxies)
 
     return response.json()
