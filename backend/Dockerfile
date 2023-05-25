@@ -12,4 +12,4 @@ RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
 COPY . ./backend
 
-ENV PYTHONPATH /app
+ENV PYTHONPATH /app/

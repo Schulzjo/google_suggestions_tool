@@ -2,7 +2,7 @@ import aiohttp
 from fastapi import FastAPI
 
 from fastapi.middleware.cors import CORSMiddleware
-from utils.api_helpers import generate_api_url, call_api
+from backend.utils.api_helpers import generate_api_url, call_api
 import asyncio
 
 app = FastAPI()

@@ -1,9 +1,7 @@
-import asyncio
+import os
 import json
-import time
 import urllib.parse
 from fake_useragent import UserAgent
-import requests
 
 
 def generate_api_url(question_word: str, keyword: str, output_format: str = "chrome"):
@@ -42,9 +40,12 @@ async def call_api(url: str, session):
     """
 
     ua = UserAgent()
+    proxy_url = "http://localhost:5566" if not os.getenv(
+        "INSIDE_DOCKER") else "http://rproxy:5566"
+
     headers = {"user-agent": ua.chrome}
     try:
-        async with session.get(url, headers=headers, verify_ssl=False) as response:
+        async with session.get(url, headers=headers, verify_ssl=False, proxy=proxy_url) as response:
             resp = await response.read()
             return json.loads(resp)
     except Exception as e:
